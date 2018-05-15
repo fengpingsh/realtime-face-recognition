@@ -1,7 +1,7 @@
-A real time face recognition using MobileNet-SSD which includes face detection. As well, I use the Movidius neural compute stick to accerate the calculation.
+Real time face recognition
 =======================================================================================================
-This is a derived project from https://github.com/fengpingbaustem/realtime-object-detection, I trained my own dataset and convert the param to graph which can
-be used by a ncs.
+This is a derived project from https://github.com/fengpingbaustem/realtime-object-detection, in this project MobileNet-SSD which includes face detection is used. 
+As well, I use the Movidius neural compute stick to accerate the calculation.I trained my own dataset and convert the param to graph which can be used by a ncs.
 
 # Run
 python ncs_realtime_facedetection.py --graph graphs/mobilenetgraph --display 1
