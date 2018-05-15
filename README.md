@@ -14,25 +14,25 @@ Please follow the guide in https://github.com/fengpingbaustem/MobileNet-SSD/tree
 # Notes
 ## Convertion to graph
 You should change the header of the prototxt file from 
-*input: "data"*
-*input_shape {*
-  *dim: 1*
-  *dim: 3*
-  *dim: 224*
-  *dim: 224*
-*}*
-__to__
-*layer {*
-  *name: "data"*
-  *type: "Input"*
-  *top: "data"*
-  *input_param {*
-    *shape {*
-      *dim: 1*
-      *dim: 3*
-      *dim: 224*
-      *dim: 224*
-    *}*
-  *}*
-*}*
+*input: "data"*  
+*input_shape {*  
+  *dim: 1*  
+  *dim: 3*  
+  *dim: 224*  
+  *dim: 224*  
+*}*  
+__to__  
+*layer {*  
+  *name: "data"*  
+  *type: "Input"*  
+  *top: "data"*  
+  *input_param {*  
+    *shape {*  
+      *dim: 1*  
+      *dim: 3*  
+      *dim: 224*  
+      *dim: 224*  
+    *}*  
+  *}*  
+*}*  
 
