@@ -1,19 +1,22 @@
 Real time face recognition
 =======================================================================================================
-This is a derived project from https://github.com/fengpingbaustem/realtime-object-detection, in this project MobileNet-SSD which includes face detection is used. 
-As well, I use the Movidius neural compute stick to accerate the calculation.I trained my own dataset and convert the param to graph which can be used by a ncs.
+This is a sister project with the realtime-object-detection, in this project MobileNet-SSD + ncs are used for face detection and recognition. 
+Please take a glance at the README in that project first.
 
 # Run
 python ncs_realtime_facedetection.py --graph graphs/mobilenetgraph --display 1
-Here the graph is converted by the caffemodel using the guide showed in https://movidius.github.io/ncsdk/
-Surely, before running, you need a neural compute stick plugged into your PC or raspberry PI device.
+--graph: required, point to a graph file that can be loaded by Intel Movodius Netural Compute Stick. You can find more information in 
+https://movidius.github.io/ncsdk/  
+--confidence: optional, default value is 0.5  
+--display: optioanl, default value is zero which means do not display the real time video.  
 
-# Train the face dataset
-Please follow the guide in https://github.com/fengpingbaustem/MobileNet-SSD/tree/master/mydataset to train face dataset and convert to graph file.
+# Train your own dataset
+Please follow the guide in https://github.com/fengpingbaustem/MobileNet-SSD/tree/master/mydataset to train face dataset. After trained the model,
+please refer the command provided by https://movidius.github.io/ncsdk/tools/compile.html to convert the model to graph file which can be loaded for NCS.
 
 # Notes
 ## Convertion to graph
-You should change the header of the prototxt file from 
+To avoid format error, you should change the header of the prototxt file from 
 *input: "data"*  
 *input_shape {*  
   *dim: 1*  
@@ -36,3 +39,7 @@ __to__
   *}*  
 *}*  
 
+## Reload the graph file
+I noticed that after running the object detection(load the graph in realtime-object-detection), if you load the face detection model to perform face 
+recognition, you will find no face will be detected at all. But if you load another graph file(vgg model for example), then it works normally, So, I guess
+the graph will be stored in ncs and do not load the new one if name are all the same? Just guess :)
